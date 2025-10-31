@@ -16,6 +16,7 @@ on:
 
 permissions:
   contents: write  # require for submit dependancies
+  checks: write
 
 jobs:
   build:
@@ -52,6 +53,7 @@ jobs:
           name: Unit Tests
           path: target/surefire-reports/*.xml
           reporter: java-junit
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Update dependency graph
         uses: advanced-security/maven-dependency-submission-action@v5
